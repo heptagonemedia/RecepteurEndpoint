@@ -9,12 +9,13 @@ public class ProtocoleDonneeBouee {
     private int etat = ATTENTE;
 
     public String gererEntree(String entree) {
-        String sortie = null;
+        String sortie = "Nonconnect;";
 
         if (etat == ATTENTE) {
-            sortie = "Debut reception";
-
-            etat = RECV_DONNEE;
+            if(entree == "Start;"){
+                sortie = "Start;";
+                etat = RECV_DONNEE;
+            } else return sortie;
         } else if (etat == RECV_DONNEE) {
 
         } else if (etat == ERREUR) {

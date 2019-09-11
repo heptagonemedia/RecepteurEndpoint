@@ -16,7 +16,7 @@ public class Main {
     }
 
     private static void commenceEcoute(String port) {
-        int portNumber = Integer.parseInt(arg);
+        int portNumber = Integer.parseInt(port);
         try (
                 ServerSocket serverSocket = new ServerSocket(portNumber);
                 Socket clientSocket = serverSocket.accept();
@@ -28,17 +28,18 @@ public class Main {
             String inputLine, outputLine;
 
             // Initiate conversation with client
-            KnockKnockProtocol kkp = new KnockKnockProtocol();
-            outputLine = kkp.processInput(null);
+            ProtocoleDonneeBouee handlerProtocole = new ProtocoleDonneeBouee();
+            outputLine = handlerProtocole.gererEntree("Start;");
             out.println(outputLine);
 
             while ((inputLine = in.readLine()) != null) {
-                outputLine = kkp.processInput(inputLine);
+                outputLine = handlerProtocole.gererEntree(inputLine);
                 out.println(outputLine);
                 if (outputLine.equals("Bye."))
                     break;
             }
-    } catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+}

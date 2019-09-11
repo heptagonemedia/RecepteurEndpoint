@@ -3,13 +3,17 @@ package com.heptagonemedia;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TimescaleDAO {
-    public TimescaleDAO instance = null;
-    public TimescaleDAO getInstance(){
+    public static TimescaleDAO instance = null;
+    public static TimescaleDAO getInstance(){
         if(instance == null) instance = new TimescaleDAO();
         return instance;
     }
+
+
+
 
     Connection connection;
 
@@ -25,8 +29,14 @@ public class TimescaleDAO {
                     "123qweQWE"
             );
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public String insererDonnees(ArrayList<String> lignes){
+        for(String ligne : lignes ){
+
+        }
+        return "";
     }
 }
