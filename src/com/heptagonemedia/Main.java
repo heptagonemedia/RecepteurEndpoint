@@ -12,10 +12,11 @@ public class Main {
     private Socket commSocket;
 
     public static void main(String[] args) {
-        commenceEcoute(args[0]);
+        //commencerEcoute(args[0]);
+        commencerEcoute(1432+"");
     }
 
-    private static void commenceEcoute(String port) {
+    private static void commencerEcoute(String port) {
         int portNumber = Integer.parseInt(port);
         try (
                 ServerSocket serverSocket = new ServerSocket(portNumber);

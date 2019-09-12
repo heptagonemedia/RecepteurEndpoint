@@ -1,5 +1,7 @@
 package com.heptagonemedia;
 
+import java.util.Stack;
+
 public class GestionnaireBuffer {
     public static GestionnaireBuffer instance = null;
     public static GestionnaireBuffer getInstance(){
@@ -7,7 +9,24 @@ public class GestionnaireBuffer {
         return instance;
     }
 
+    private Stack<String> pileEntree;
     public  GestionnaireBuffer(){
-        
+        pileEntree = new Stack<>();
     }
+
+    public void ajouterEntree(String entree){
+        pileEntree.push(entree);
+    }
+
+    public int getTaillePile(){
+        return pileEntree.size();
+    }
+
+    public String[] getNbLignes(int nombre){
+        String[] lignes = new String[nombre];
+        for(int index = 0; index <= nombre; index++) lignes[index] = pileEntree.pop();
+        //lignes = (String[])pileEntree.subList(0,nombre).toArray();
+        return lignes;
+    }
+
 }

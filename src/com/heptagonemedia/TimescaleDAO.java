@@ -1,5 +1,10 @@
 package com.heptagonemedia;
 
+import org.postgresql.copy.CopyManager;
+import org.postgresql.core.BaseConnection;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,9 +16,6 @@ public class TimescaleDAO {
         if(instance == null) instance = new TimescaleDAO();
         return instance;
     }
-
-
-
 
     Connection connection;
 
@@ -33,10 +35,19 @@ public class TimescaleDAO {
         }
     }
 
-    public String insererDonnees(ArrayList<String> lignes){
-        for(String ligne : lignes ){
+    public String insererDonnees(String donnees) throws Exception {
+        try  {
+            CopyManager copyManager = new CopyManager((BaseConnection) connection);
 
+            byte[] octets = donnees.getBytes();
+
+            ByteArrayInputStream entree = new ByteArrayInputStream(octets);
+
+            copyManager.copyIn("COPY public.testtable FROM STDIN WITH DELIMITER ';'", entree);
+
+            return "";
+        } catch (SQLException | IOException e) {
+            throw new Exception(e);
         }
-        return "";
     }
 }
