@@ -43,7 +43,7 @@ public class TimescaleDAO {
 
             ByteArrayInputStream entree = new ByteArrayInputStream(octets);
 
-            copyManager.copyIn("COPY public.testtable FROM STDIN WITH DELIMITER ';'", entree);
+            copyManager.copyIn("COPY public.testtable (id_bouee, temperature, salinite, debit, date_temps, longitude, latitude, batterie)FROM STDIN WITH DELIMITER ';'", entree);
 
             return "";
         } catch (SQLException | IOException e) {

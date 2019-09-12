@@ -14,6 +14,22 @@ public class Main {
     public static void main(String[] args) {
         //commencerEcoute(args[0]);
         commencerEcoute(1432+"");
+
+        //surveillerPile();
+
+
+    }
+
+    private static void surveillerPile() {
+        Runnable surveillance = () -> {
+            GestionnaireBuffer buffer = GestionnaireBuffer.getInstance();
+        };
+
+
+        Thread thread = new Thread(surveillance);
+        thread.start();
+
+        System.out.println("Surveillance commencée!");
     }
 
     private static void commencerEcoute(String port) {

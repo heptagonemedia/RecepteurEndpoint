@@ -1,5 +1,6 @@
 package com.heptagonemedia;
 
+import java.util.Date;
 import java.sql.Time;
 
 public class ProtocoleDonneeBouee {
@@ -33,14 +34,21 @@ public class ProtocoleDonneeBouee {
 
                 if(buffer.getTaillePile() > 0) {
                     TimescaleDAO baseDeDonnees = TimescaleDAO.getInstance();
-                    //String donnees = buffer.getNbLignes(buffer.getTaillePile()).toString();
-
-                    /*String donnees = "";
-                    for (int i=0; i<5000; i++){
+/*
+                    String donnees = "";
+                    for (int i=0; i<75000; i++){
                         donnees += "now();UllaBritaMongolfiere;254.09872;234.75677"+"\r\n";
-                    }*/
+                    }
+                    */
+
                     String donnees = buffer.getNbLignes(buffer.getTaillePile());
+
+                    Date avant = new Date();
                     baseDeDonnees.insererDonnees(donnees);
+                    Date apres = new Date();
+
+                    long runtime = apres.getTime() - avant.getTime();
+                    System.out.println("Processed in " + runtime +"ms.");
                 }
 
                 etat = 7;
