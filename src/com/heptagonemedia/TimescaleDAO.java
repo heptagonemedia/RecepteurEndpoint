@@ -42,7 +42,7 @@ public class TimescaleDAO {
             byte[] octets = donnees.getBytes();
 
             ByteArrayInputStream entree = new ByteArrayInputStream(octets);
-
+            //System.out.println(entree);
             copyManager.copyIn("COPY public.testtable (id_bouee, temperature, salinite, debit, date_temps, longitude, latitude, batterie)FROM STDIN WITH DELIMITER ';'", entree);
 
             return "";
