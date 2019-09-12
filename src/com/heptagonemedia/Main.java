@@ -39,7 +39,7 @@ public class Main {
                 if (outputLine.equals("Bye."))
                     break;
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -22,10 +22,9 @@ public class GestionnaireBuffer {
         return pileEntree.size();
     }
 
-    public String[] getNbLignes(int nombre){
-        String[] lignes = new String[nombre];
-        for(int index = 0; index <= nombre; index++) lignes[index] = pileEntree.pop();
-        //lignes = (String[])pileEntree.subList(0,nombre).toArray();
+    public String getNbLignes(int nombre){
+        String lignes = new String();
+        for(int index = 0; index < nombre; index++) lignes += pileEntree.pop();
         return lignes;
     }
 

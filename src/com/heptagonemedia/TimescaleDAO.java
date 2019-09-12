@@ -26,7 +26,7 @@ public class TimescaleDAO {
     private void initierConnection() {
         try {
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/imr_timescale",
+                    "jdbc:postgresql://192.168.56.10:5432/imr_timescale",
                     "master",
                     "123qweQWE"
             );
